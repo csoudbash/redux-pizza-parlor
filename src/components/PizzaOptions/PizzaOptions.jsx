@@ -1,23 +1,58 @@
 import axios from 'axios';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import MenuItem from '../MenuItem/MenuItem'
+import { useHistory } from 'react-router-dom';
 
-function PizzaOptions(){
+
+
+function PizzaOptions() {
+
+    const dispatch = useDispatch();
+    const menuList = useSelector(store => store.menuList)
+
 
     useEffect(() => {
         getMenu();
-      }, []);
+    }, []);
 
     const getMenu = () => {
         console.log('getMenu');
-        axios.get('/api/pizza').then(response => {
-            console.log('response', response.data);
-        })
+        axios.get('/api/pizza')
+            .then(response => {
+                console.log('response', response.data);
+                dispatch({
+                    type: 'APPEND_MENU',
+                    payload: response.data
+                })
+            }).catch(error => {
+                console.log('GET menu error:', error);
+            })
     }
 
+    const history = useHistory();
 
-    return(
+//     let nextPage = () => {
+//       console.log('nextPage');
+//       history.push("/administrator")
+//   }
+
+
+
+    return (
         <>
-
+            <div className='menu'>
+                {menuList.map((menuItem, index) =>
+                    <MenuItem
+                        key={index}
+                        menuItem={menuItem} />
+                )}
+            </div>
+            <button
+                className='next-button'
+                // value={'CustomerInfo'}
+                onClick={()=>(history.push("/customer-info"))}
+            >Next</button>
         </>
     )
 }

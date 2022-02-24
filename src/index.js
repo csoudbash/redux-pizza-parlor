@@ -7,19 +7,25 @@ import { logger } from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware} from 'redux';
 
 
+const menuList = (state = [], action) => {
+    if (action.type === 'APPEND_MENU'){
+        console.log('inside MenuList');
+        return action.payload;
+    }
 
+    return state
+}
 
 
 
 
 
 const storeInstance = createStore(
-
-    // combineReducers(
-        // {
-
-        // }
-    // ),
+    combineReducers(
+        {
+        menuList
+        }
+    ),
     applyMiddleware(
         logger
     )

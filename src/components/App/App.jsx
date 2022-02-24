@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link} from 'react-router-dom';
+
 
 // Components
 import Header from '../Header/Header.jsx'
@@ -14,6 +15,9 @@ import Administrator from '../Administrator/Administrator.jsx'
 
 
 function App() {
+
+
+
 
   return (
     <Router>
