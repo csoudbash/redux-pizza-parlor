@@ -26,12 +26,7 @@ function CustomerInfo() {
     }
 
     // reducer to put onto index.js for adding customer info from the second page.
-    // const CustomerReducer = (state = [], action) => {
-        // if(action.type === 'ADD_CUSTOMER_INFO'){
-        //     return (action.payload)
-        // }
-        // return state;
-    // } 
+
 
 
 
