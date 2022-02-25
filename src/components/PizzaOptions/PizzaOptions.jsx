@@ -32,10 +32,10 @@ function PizzaOptions() {
 
     const history = useHistory();
 
-//     let nextPage = () => {
-//       console.log('nextPage');
-//       history.push("/administrator")
-//   }
+    let nextPage = () => {
+      console.log('nextPage');
+      history.push("/customer-info");
+  }
 
 
 
@@ -51,7 +51,7 @@ function PizzaOptions() {
             <button
                 className='next-button'
                 // value={'CustomerInfo'}
-                onClick={()=>(history.push("/customer-info"))}
+                onClick={()=> nextPage()}
             >Next</button>
         </>
     )
