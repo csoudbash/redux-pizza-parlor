@@ -1,5 +1,7 @@
 import {useSelector} from 'react-redux';
 import Header from "../Header/Header";
+import React from 'react-dom';
+
 
 
 
@@ -18,11 +20,13 @@ function Checkout(){
         <Header />
         <h1>Checkout</h1>
 
-        {customerReducer.map((customer, i) => {
-            return  <p key={i}>
-                {customer}
-            </p>
-        })}
+        <ul>
+            {customerReducer.map((customer, i) => {
+                return  <p key={i}>
+                    {customer.name}
+                </p>
+            })}
+        </ul>
             
             <table>
                 <thead>
