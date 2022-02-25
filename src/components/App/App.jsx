@@ -22,23 +22,23 @@ function App() {
   return (
     <Router>
       <div className='App'>
-      <Header/>
+      
 
-        <img src='images/pizza_photo.png' />
-        <p>Pizza is great.</p>
+        {/* <img src='images/pizza_photo.png' />
+        <p>Pizza is great.</p> */}
         {/* <Route path="/" exact>
           <Home />
         </Route>  */}
-        <Route path="/pizza-options">
+        <Route exact path="/pizza-options">
           <PizzaOptions />
         </Route>
-        <Route path="/customer-info">
+        <Route exact path="/customer-info">
           <CustomerInfo />
         </Route>
-        <Route path="/checkout">
+        <Route exact path="/checkout">
           <Checkout />
         </Route>
-        <Route path="/administrator">
+        <Route exact path="/administrator">
           <Administrator />
         </Route>
 
