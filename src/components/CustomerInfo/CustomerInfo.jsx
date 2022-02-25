@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Header from "../Header/Header";
 import { useDispatch} from "react-redux"
+import { useHistory } from 'react-router-dom';
+
+
 
 function CustomerInfo() {
 
@@ -8,27 +11,34 @@ function CustomerInfo() {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
-    const [type, setType] = useState('')
-    const [customerInfo, setCustomerInfo] = useState({name, address, city, zip, type})
+    const [type, setType] = useState('');
+    // const [customerInfo, setCustomerInfo] = useState();
     const dispatch = useDispatch();
 
     
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+
+        // setCustomerInfo({name, address, city, zip, type});
         dispatch({
             type: 'ADD_CUSTOMER_INFO',
-            payload: customerInfo,
+            payload: {
+                name: name,
+                address: address,
+                city: city,
+                zip: zip,
+                type: type
+            },
             
         })
-        console.log();
+        history.push("/checkout");
     }
 
     // reducer to put onto index.js for adding customer info from the second page.
 
 
-
+    const history = useHistory();
 
 
     return(
@@ -36,7 +46,7 @@ function CustomerInfo() {
             <Header/>
 
             <h2>Customer Info</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(event) => handleSubmit(event)}>
                     <input 
                     placeholder="Name"
                     type="text"
@@ -81,6 +91,12 @@ function CustomerInfo() {
                    />
                    <label>Pickup</label> 
                 </form>
+                <button
+                className='next-button'
+                value={'Customer Info'}
+                onClick={handleSubmit}
+                // onClick={()=>(history.push("/checkout"))}
+            >Next</button>
         </>
 
     )
