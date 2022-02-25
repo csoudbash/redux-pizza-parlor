@@ -16,7 +16,7 @@ const menuList = (state = [], action) => {
     return state
 }
 
-const CustomerReducer = (state = [], action) => {
+const customerReducer = (state = [], action) => {
     if(action.type === 'ADD_CUSTOMER_INFO'){
         return (action.payload)
     }
@@ -30,7 +30,8 @@ const CustomerReducer = (state = [], action) => {
 const storeInstance = createStore(
     combineReducers(
         {
-        menuList,CustomerReducer
+        menuList,
+        customerReducer
         }
     ),
     applyMiddleware(
